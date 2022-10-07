@@ -9,6 +9,7 @@ import cn.hc.servicelogin.service.DockerListService;
 import cn.hc.servicelogin.service.DockerProjectService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -26,7 +27,7 @@ public class DockerProjectController {
     @Autowired
     private DockerProjectService service;
     @PostMapping("saveData")
-    public R saveData(@RequestBody DockerInfoVo dockerQuery){
+    public R saveData(@Validated @RequestBody DockerInfoVo dockerQuery){
         DockerProject dockerProject = new DockerProject();
         BeanUtils.copyProperties(dockerQuery,dockerProject);
 

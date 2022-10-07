@@ -1,12 +1,16 @@
 package cn.hc.servicelogin.entity;
 
 import java.math.BigDecimal;
+
+import cn.hc.servicelogin.vaild.ListValue;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import javax.validation.constraints.NotEmpty;
 
 /**
  * <p>
@@ -31,6 +35,7 @@ public class DockerProject implements Serializable {
     /**
      * 体检项目名称
      */
+    @NotEmpty
     private String title;
 
     /**
@@ -61,11 +66,14 @@ public class DockerProject implements Serializable {
     /**
      * 项目状态 Draft未发布  Normal已发布
      */
+
     private String status;
 
     /**
-     * 逻辑删除 1（true）已删除， 0（false）未删除
+     * 逻辑删除 1（true）已删除， 0（false）未删除\
+     * 自定义校验
      */
+    @ListValue(value = {0,1})
     private Integer isDeleted;
 
     /**
@@ -81,6 +89,7 @@ public class DockerProject implements Serializable {
     /**
      * 描述
      */
+    @NotEmpty
     private String description;
 
 
